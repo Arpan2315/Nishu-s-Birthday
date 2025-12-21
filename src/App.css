@@ -1,0 +1,103 @@
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.animate-twinkle {
+  animation: twinkle 2.5s infinite ease-in-out;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-120px) translateY(120px);
+    opacity: 0;
+  }
+}
+.animate-fall {
+  animation: fall 1.8s linear infinite;
+}
+.cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  font-size: 14px;
+  transform: translate(-50%, -50%);
+  animation: trail-float 1.2s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes trail-float {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -90px) scale(1.6);
+  }
+}
+@keyframes shooting {
+  0% {
+    transform: translateX(0) translateY(0) rotate(45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(300px) translateY(300px) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
+  position: absolute;
+  animation: shooting 2.5s linear infinite;
+  opacity: 0;
+}
+
+/* ☁️ Cloud Base */
+.cloud {
+  position: absolute;
+  top: 30%;
+  width: 200%;
+  height: 300px;
+  background-repeat: repeat-x;
+  opacity: 0.18;
+  filter: blur(20px);
+}
+
+/* ☁️ Cloud Layer 1 */
+.cloud-1 {
+  background: radial-gradient(circle at 20% 50%, #ffffff 0%, transparent 60%),
+              radial-gradient(circle at 50% 50%, #ffffff 0%, transparent 60%),
+              radial-gradient(circle at 80% 50%, #ffffff 0%, transparent 60%);
+  animation: moveClouds 140s linear infinite;
+}
+
+/* ☁️ Cloud Layer 2 */
+.cloud-2 {
+  top: 45%;
+  background: radial-gradient(circle at 30% 50%, #ffffff 0%, transparent 65%),
+              radial-gradient(circle at 60% 50%, #ffffff 0%, transparent 65%),
+              radial-gradient(circle at 90% 50%, #ffffff 0%, transparent 65%);
+  animation: moveClouds 200s linear infinite reverse;
+  opacity: 0.12;
+}
+
+/* ☁️ Animation */
+@keyframes moveClouds {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
