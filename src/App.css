@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 @keyframes twinkle {
   0%, 100% { opacity: 0.2; }
   50% { opacity: 1; }
@@ -101,3 +102,357 @@
   }
 }
 
+
+
+@keyframes fly {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateX(120vw) translateY(-40px);
+    opacity: 0;
+  }
+}
+
+
+/* 🐦 Shadow Birds
+.bird {
+  position: absolute;
+  left: 110%;
+  width: 18px;
+  height: 8px;
+  border-top: 2px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+  animation: birdFly 14s linear infinite;
+}
+
+.bird::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 0;
+  width: 18px;
+  height: 8px;
+  border-top: 2px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+}
+
+@keyframes birdFly {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(-140vw) translateY(-25px);
+    opacity: 0;
+  }
+} */
+
+
+/* 🐦 Shadow Birds */
+.bird {
+  position: absolute;
+  left: 110%;
+  width: 18px;
+  height: 8px;
+  border-top: 2px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+  animation: birdFly 14s linear infinite;
+}
+
+.bird::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 0;
+  width: 18px;
+  height: 8px;
+  border-top: 2px solid rgba(255,255,255,0.55);
+  border-radius: 50%;
+}
+
+@keyframes birdFly {
+  0% { transform: translateX(0); opacity: 0; }
+  15% { opacity: 0.6; }
+  100% { transform: translateX(-140vw); opacity: 0; }
+}
+
+/* 
+Anger Release Styles */
+/* src/App.css mein add karein */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at bottom, #1B2735 0%, #090A0F 100%);
+  color: white;
+}
+
+.game-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.player-avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid #ff69b4;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+}
+
+/* .opponent-zone {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 4px dashed #ff1493;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: rgba(255, 20, 147, 0.1);
+  transition: background-color 0.1s ease;
+} */
+
+.opponent-zone {
+  position: relative;
+  cursor: pointer;
+  margin: 20px;
+}
+.opponent-zone:hover {
+  background-color: rgba(255, 20, 147, 0.2);
+}
+
+/* .my-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #61dafb; /* Tumhare avatar ka border */
+  /* box-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+  transition: transform 0.05s ease-out; /* Smooth physical feel */
+/* } */
+
+.my-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  object-fit: cover;
+}
+
+/* 
+.hit-text {
+  position: absolute;
+  font-size: 2em;
+  font-weight: bold;
+  color: #ff4500;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  pointer-events: none; /* Taaki click uske peeche wale div par ho */
+/* } */ 
+
+.hit-text {
+  position: absolute;
+  top: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ff4d4d;
+  pointer-events: none;
+}
+
+.game-info p {
+  font-size: 1.1em;
+  color: #a9a9a9;
+}
+
+.game-end-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  background-color: #3a3f47;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.hug-gif {
+  width: 250px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Ensure your main App.js doesn't override these styles or background */
+/* Remove existing body/container styles if they conflict */
+
+/* Night Sky Background */
+#stars, #stars2, #stars3 {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%; height: 100%;
+  display: block;
+}
+
+/* 3 Layers of Stars for depth */
+#stars {
+  width: 1px; height: 1px;
+  background: transparent;
+  box-shadow: 10vw 20vh #FFF, 50vw 40vh #FFF, 80vw 10vh #FFF, 20vw 90vh #FFF, 60vw 70vh #FFF, 90vw 50vh #FFF, 30vw 30vh #FFF;
+  animation: blink 3s infinite;
+}
+
+#stars2 {
+  width: 2px; height: 2px;
+  background: transparent;
+  box-shadow: 15vw 25vh #FFF, 55vw 45vh #FFF, 85vw 15vh #FFF, 25vw 95vh #FFF, 65vw 75vh #FFF;
+  animation: blink 4s infinite;
+}
+
+#stars3 {
+  width: 3px; height: 3px;
+  background: transparent;
+  box-shadow: 5vw 5vh #FFF, 45vw 35vh #FFF, 75vw 55vh #FFF, 95vw 85vh #FFF;
+  animation: blink 5s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Font for My World */
+
+
+/* ===== ROOT CONTAINER ===== */
+.thankyou-container {
+  min-height: 100vh;
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== NIGHT SKY STARS ===== */
+.stars-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.6); }
+}
+
+/* ===== HEADER TEXT ===== */
+.header-text {
+  text-align: center;
+  color: white;
+  z-index: 2;
+  margin-bottom: 30px;
+}
+
+.thankyou-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.sub-text {
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+/* ===== CARD STACK CENTER ===== */
+.card-stack {
+  position: relative;
+  width: 320px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* ===== CARD DESIGN ===== */
+.thought-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  padding: 25px;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  cursor: grab;
+  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.35);
+}
+
+.thought-card:active {
+  cursor: grabbing;
+}
+
+.swipe-hint {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* ===== FINAL MESSAGE ===== */
+.final-msg-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 35px;
+  text-align: center;
+  color: white;
+  width: 320px;
+  box-shadow: 0 0 40px rgba(255, 105, 180, 0.4);
+}
+
+.heart-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.last-btn {
+  margin-top: 20px;
+  background: #ff69b4;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.last-btn:hover {
+  transform: scale(1.08);
+}

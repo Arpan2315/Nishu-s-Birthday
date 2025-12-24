@@ -154,7 +154,7 @@ export default function OpenWhen() {
           ← Back
         </button>
         <button
-          onClick={() => navigate("/thankyou")}
+          onClick={() => navigate("/bubble")}
           className="px-6 py-3 rounded-full bg-pink-500 hover:bg-pink-600 shadow-lg"
         >
           Final Surprise 💖
