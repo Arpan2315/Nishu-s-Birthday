@@ -11,8 +11,8 @@ import StressReliefGame from "./Components/StressReliefGame";
 import PunchingGame from "./Components/PunchingGame";
 import FunnyVideo from "./Components/FunnyVideo";
 
-import InfiniteMenuFinal from "./Components/world/infiniteMenuFinal";
-import ThankYouPage from "./Components/ThankYouPage.jsx";
+import InfiniteMenuFinal from "./Components/world/InfiniteMenuFinal";
+import ThankYouPage from "./Components/ThankYouPage.jsx.jsx";
 
 export default function AppRouter() {
   return (
