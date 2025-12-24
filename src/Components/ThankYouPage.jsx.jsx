@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 // import confetti from 'canvas-confetti';
 import '../App.css'; // Is CSS ko neeche se copy karo
-let confetti;
+
 
 const ThankYouPage = () => {
   const [cards, setCards] = useState([
@@ -12,6 +12,8 @@ const ThankYouPage = () => {
     { id: 4, text: "I promise to fulfill every wish of yours, always. 💍", color: "#DA70D6" },
     { id: 5, text: "Thank you for being my safest home. 🏠💖", color: "#FFB6C1" },
   ]);
+  const confettiRef = useRef(null);
+
 
   // Initial Confetti Blast
   // useEffect(() => {
@@ -40,35 +42,65 @@ const ThankYouPage = () => {
   //   };
   //   frame();
   // }, []);
+  //   useEffect(() => {
+  //     // let confetti;
+  //   import("canvas-confetti").then((module) => {
+  //     confetti = module.default;
+
+  //     const duration = 3000;
+  //     const end = Date.now() + duration;
+
+  //     const frame = () => {
+  //       confetti({
+  //         particleCount: 2,
+  //         angle: 60,
+  //         spread: 55,
+  //         origin: { x: 0 },
+  //         colors: ["#ff69b4", "#ffffff"],
+  //       });
+  //       confetti({
+  //         particleCount: 2,
+  //         angle: 120,
+  //         spread: 55,
+  //         origin: { x: 1 },
+  //         colors: ["#ff69b4", "#ffffff"],
+  //       });
+
+  //       if (Date.now() < end) requestAnimationFrame(frame);
+  //     };
+
+  //     frame();
+  //   });
+  // }, []);
   useEffect(() => {
-  import("canvas-confetti").then((module) => {
-    confetti = module.default;
+    import("canvas-confetti").then((module) => {
+      confettiRef.current = module.default;
 
-    const duration = 3000;
-    const end = Date.now() + duration;
+      const duration = 3000;
+      const end = Date.now() + duration;
 
-    const frame = () => {
-      confetti({
-        particleCount: 2,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        colors: ["#ff69b4", "#ffffff"],
-      });
-      confetti({
-        particleCount: 2,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-        colors: ["#ff69b4", "#ffffff"],
-      });
+      const frame = () => {
+        confettiRef.current({
+          particleCount: 2,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0 },
+          colors: ["#ff69b4", "#ffffff"],
+        });
+        confettiRef.current({
+          particleCount: 2,
+          angle: 120,
+          spread: 55,
+          origin: { x: 1 },
+          colors: ["#ff69b4", "#ffffff"],
+        });
 
-      if (Date.now() < end) requestAnimationFrame(frame);
-    };
+        if (Date.now() < end) requestAnimationFrame(frame);
+      };
 
-    frame();
-  });
-}, []);
+      frame();
+    });
+  }, []);
 
 
   const swipeAway = (id) => {
@@ -80,9 +112,9 @@ const ThankYouPage = () => {
       {/* --- Night Sky Background --- */}
       <div className="stars-container">
         {[...Array(50)].map((_, i) => (
-          <div 
-            key={i} 
-            className="star" 
+          <div
+            key={i}
+            className="star"
             style={{
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
@@ -93,7 +125,7 @@ const ThankYouPage = () => {
       </div>
 
       {/* --- Top Header --- */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         className="header-text"
@@ -114,19 +146,19 @@ const ThankYouPage = () => {
                 if (Math.abs(info.offset.x) > 100) swipeAway(card.id);
               }}
               initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ 
-                scale: 1 - (cards.length - 1 - index) * 0.05, 
+              animate={{
+                scale: 1 - (cards.length - 1 - index) * 0.05,
                 y: (cards.length - 1 - index) * -10,
-                opacity: 1 
+                opacity: 1
               }}
-              exit={{ 
-                x: Math.random() > 0.5 ? 500 : -500, 
-                rotate: 20, 
-                opacity: 0 
+              exit={{
+                x: Math.random() > 0.5 ? 500 : -500,
+                rotate: 20,
+                opacity: 0
               }}
-              style={{ 
+              style={{
                 backgroundColor: card.color,
-                zIndex: index 
+                zIndex: index
               }}
               className="thought-card"
             >
@@ -138,21 +170,29 @@ const ThankYouPage = () => {
 
         {/* --- Final Interactive Message --- */}
         {cards.length === 0 && (
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }} 
-            animate={{ scale: 1, opacity: 1 }} 
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             className="final-msg-box"
           >
-            <motion.div 
-               animate={{ scale: [1, 1.2, 1] }} 
-               transition={{ repeat: Infinity, duration: 1 }}
-               className="heart-icon"
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ repeat: Infinity, duration: 1 }}
+              className="heart-icon"
             >❤️</motion.div>
             <h2>I Love You Forever!</h2>
             <p>Hamesha saath rahenge? ✨</p>
-            <button 
+            <button
               className="last-btn"
-              onClick={() => confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } })}
+              onClick={() =>
+                confettiRef.current &&
+                confettiRef.current({
+                  particleCount: 150,
+                  spread: 80,
+                  origin: { y: 0.6 },
+                })
+              }
+
             >
               Yes, Pakka! 💍
             </button>

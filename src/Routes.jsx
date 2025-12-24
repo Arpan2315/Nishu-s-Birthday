@@ -5,9 +5,9 @@ import MemoryLane from"./Components/MemoryLane"
 import OpenWhen from"./Components/OpenWhen"
 import MemoryTimeline from"./Components/MemoryTimeline"
 import BubbleWrap from"./Components/BubbleWrap"
-import RomanticScene from "./Components/RomanticScene";
+
 import AngerRelease from "./Components/PunchingGame";
-import StressReliefGame from "./Components/StressReliefGame";
+
 import PunchingGame from "./Components/PunchingGame";
 import FunnyVideo from "./Components/FunnyVideo";
 
